@@ -3,7 +3,7 @@ const { connection } = require("./db")
 const { userRoute } = require("./routes/user.routes")
 const jwt = require('jsonwebtoken');
 const { auth } = require("./middleware/auth");
-const { postRoute } = require("./routes/post.routes");
+
 
 require('dotenv').config()
 
@@ -17,7 +17,7 @@ app.use("/users", userRoute)
 app.use(auth)
 // protected routes ---> Token
 
-app.use("/posts", postRoute)
+
 
 app.listen(process.env.port, async()=>{
     try {
