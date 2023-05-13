@@ -15,7 +15,7 @@ userRoute.post("/register", async(req, res)=>{
         res.status(200).json({msg:"New user has been added"})
     }
     else{
-        res.send({"msg":"An error occured while bcrypting"})
+        res.status(401). send({"msg":"An error occured while bcrypting"})
     }
 });
     } catch (error) {
@@ -33,15 +33,15 @@ userRoute.post("/login", async(req, res)=>{
      if(user){
          bcrypt.compare(password, user.password, function(err, result) {
          if(result){
-            res.json({msg:"You are Log in", token})
+            res.status(200).json({msg:"You are Log in", token})
         }
         else{
-            res.json({err:"Wrong Information"})
+            res.status(401).json({err:"Wrong Information"})
         }
     });  
      }
      else{
-        res.json({msg:"User Not Found"})
+        res.status(402).json({msg:"User Not Found"})
      }
     } catch (error) {
         res.status(400).json({err:error})
